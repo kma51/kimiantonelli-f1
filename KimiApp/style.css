@@ -1,0 +1,188 @@
+/* Style général du corps de la page */
+body {
+    font-family: 'Inter', sans-serif; /* Applique Inter à tout le corps du texte */
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+/* --- SECTION FOND ANIMÉ --- */
+/* Remplacez le contenu de .animated-background et son ::before */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Un dégradé de base */
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #e94560);
+    background-size: 400% 400%; /* Taille plus grande pour l'animation */
+    animation: gradientAnimation 15s ease infinite; /* Animation du dégradé */
+}
+
+/* Animation du dégradé de couleurs */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Remplacez .animated-background par ceci */
+.background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    /* Assure que la vidéo ne déborde pas */
+    object-fit: cover;
+    /* Légère opacité pour que le texte reste lisible */
+    opacity: 0.7; 
+    /* Filtre sombre pour contraste, ajustez au besoin */
+    filter: brightness(0.6) grayscale(0.2); 
+}
+
+/* Gardez le body z-index: 1 et le header/cards z-index: 2 */
+body {
+    /* ... (vos styles existants) ... */
+    min-height: 100vh;
+    position: relative; /* Nécessaire pour z-index */
+    z-index: 1; /* Assure que le body et son contenu sont au-dessus de la vidéo */
+    /* Ajoutez un fond de secours pour quand la vidéo charge ou ne se joue pas */
+    background-color: #222; 
+}
+/* --- Styles pour l'en-tête (Header Banner) --- */
+.header-banner {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 10px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2; /* Assure que l'en-tête est au-dessus du fond */
+}
+
+.header-banner h1 {
+    margin: 0 0 10px 0;
+    font-size: 2em;
+}
+
+.countdown-timer {
+    font-family: 'Oxanium', sans-serif; /* Nouvelle police pour le compte à rebours */
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #FF0000;
+    letter-spacing: 2px;
+}
+
+/* --- Styles pour le conteneur principal du contenu --- */
+.content-container {
+    background-color: #fff;
+    padding: 25px;
+    margin: 10px auto 20px auto;
+    width: 90%;
+    max-width: 960px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Assure que le conteneur est au-dessus du fond */
+}
+
+.content-container h2 {
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+/* --- Styles pour la grille de cartes (trois petites cartes) --- */
+.card-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne sur petits écrans */
+    gap: 20px; /* Espace entre les cartes */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2; /* Assure que la grille est au-dessus du fond */
+}
+
+.info-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    text-align: center;
+    flex: 1; /* Permet aux cartes de s'étirer */
+    min-width: 280px; /* Largeur minimale pour éviter qu'elles ne soient trop petites */
+    max-width: 350px; /* Largeur maximale pour une carte individuelle */
+    box-sizing: border-box; /* Inclut padding et bordure dans la largeur */
+}
+
+/* Styles pour les titres des cartes (h3) */
+.info-card h3 {
+    font-family: 'Oxanium', sans-serif; /* Nouvelle police pour les titres des cartes */
+    color: #FF4500;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+/* Style pour l'image de Kimi Antonelli */
+.image-kimi {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* --- Styles pour la nouvelle case horizontale --- */
+/* Cette règle DOIT être autonome et non imbriquée */
+.horizontal-card {
+    width: calc(100% - 40px); /* Prend presque toute la largeur, laissant 20px de chaque côté */
+    max-width: 1200px; /* S'aligne avec le bandeau du haut si la fenêtre est très large */
+    margin: 20px auto; /* Centre la case et ajoute de l'espace */
+    text-align: left; /* Le texte sera aligné à gauche */
+    padding: 20px; /* Assurez-vous que le padding interne reste correct */
+    box-sizing: border-box; /* Important pour que le padding soit inclus dans la largeur */
+    position: relative;
+    z-index: 2; /* Assure que la carte est au-dessus du fond */
+}
+
+/* --- Styles pour la citation dans la carte horizontale --- */
+.horizontal-card blockquote {
+    font-family: 'Inter', sans-serif; /* Conserver la police du corps de texte, mais on peut la modifier */
+    font-size: 1.3em; /* Un peu plus grand que le texte normal */
+    line-height: 1.5;
+    margin: 20px 0; /* Espace au-dessus et en dessous */
+    padding-left: 25px; /* Indentation forte pour simuler la citation */
+    border-left: 5px solid #FF4500; /* Une barre colorée sur le côté gauche */
+    color: #555; /* Une couleur un peu plus foncée pour le texte de la citation */
+    font-style: italic; /* Texte en italique pour un style de citation classique */
+}
+
+.horizontal-card blockquote p {
+    margin: 0; /* Supprime la marge par défaut des paragraphes dans la citation */
+}
+
+.horizontal-card blockquote footer {
+    margin-top: 10px; /* Espace entre la citation et l'auteur */
+    font-size: 0.9em; /* Taille plus petite pour l'auteur */
+    color: #777; /* Couleur plus claire pour l'auteur */
+    text-align: right; /* Aligne l'auteur à droite */
+    padding-right: 10px; /* Petit décalage à droite */
+}
